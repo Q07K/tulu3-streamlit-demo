@@ -6,10 +6,12 @@ def set_user_message_field():
         body="""<style>
     .st-emotion-cache-1c7y2kd {
         flex-direction: row-reverse;
-        text-align: right;
         border-radius: 25px;
         background-color: #F0EBE3;
         padding: 8px 16px;
+        width: fit-content;
+        max-width: 100%;
+        margin-left: auto;
     }
     </style>""",
         unsafe_allow_html=True,
