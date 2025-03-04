@@ -1,34 +1,23 @@
 import streamlit as st
 
-from entities.chat_message_entity import ChatMessageEntity
-from styles import chat_message_style, text_style
-from widgets.chat_widgets import first_chat
-from widgets.common.slider import hyperparameter_slider
+from components import chat_component, sidebar_component
+from entities.chat_entity import ChatMessageEntity
+from styles import chat_style, text_style
 
 # Set styles
 text_style.set_title()
-chat_message_style.set_user_message_field()
-chat_message_style.disable_user_messagge_icon()
-chat_message_style.disable_ai_messagge_icon()
+chat_style.set_user_message_field()
+chat_style.disable_user_messagge_icon()
+chat_style.disable_ai_messagge_icon()
 
 # Main page
-with st.sidebar:
-    st.subheader(body="Models")
-    st.selectbox(
-        label="Model Name",
-        options=["Tülu3-8B", "Tülu3-70B"],
-        key="model_name",
-    )
-    st.subheader(body="Hyperparameters")
-    hyperparameter_slider(name="Max Token")
-    hyperparameter_slider(name="Temperature")
-    hyperparameter_slider(name="Top K")
-
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+sidebar_component.sidebar()
+
 if not st.session_state.messages:
-    if user_query := first_chat():
+    if user_query := chat_component.first_chat():
         st.session_state.messages.append(
             ChatMessageEntity(
                 rule="user",
