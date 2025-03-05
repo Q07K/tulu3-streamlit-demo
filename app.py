@@ -2,7 +2,7 @@ import streamlit as st
 
 from components import chat_component, sidebar_component
 from entities.chat_entity import ChatMessageEntity
-from styles import chat_style, font_style, text_style
+from styles import button_style, chat_style, font_style, text_style
 
 # Set styles
 font_style.set_font()
@@ -10,6 +10,8 @@ text_style.set_title()
 chat_style.set_user_message_field()
 chat_style.disable_user_messagge_icon()
 chat_style.disable_ai_messagge_icon()
+button_style.set_button()
+
 
 # Main page
 if "messages" not in st.session_state:
