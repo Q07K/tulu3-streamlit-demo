@@ -7,5 +7,8 @@ def first_chat():
 
     with field:
         st.title(body="무엇을 도와드릴까요?")
-        user_query = st.chat_input("test", key="user_query")
+        user_query = st.chat_input(
+            placeholder="무엇이든 물어보세요.",
+            key="user_query",
+        )
     return user_query
